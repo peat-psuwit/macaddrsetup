@@ -29,7 +29,8 @@ LOCAL_MODULE_OWNER := sony
 LOCAL_INIT_RC      := vendor/etc/init/macaddrsetup.rc
 LOCAL_PROPRIETARY_MODULE := true
 else
-ifneq ($(call math_gt_or_eq, $(PLATFORM_SDK_VERSION), 25),)
+# Android 7's build system doesn't contain math_gt_or_eq.
+ifneq ($(filter $(PLATFORM_SDK_VERSION), 25 26 27 28),)
 LOCAL_MODULE_OWNER := sony
 LOCAL_INIT_RC      := vendor/etc/init/macaddrsetup_sdk25.rc
 LOCAL_PROPRIETARY_MODULE := true
